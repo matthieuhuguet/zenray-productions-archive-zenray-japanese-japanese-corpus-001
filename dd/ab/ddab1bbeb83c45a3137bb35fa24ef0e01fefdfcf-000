@@ -1,0 +1,88 @@
+---
+name: japanese-lesson
+description: >
+  Conduire une leçon de japonais pour Matthieu selon sa méthode validée (oral-first,
+  SRS DrillTracker, MOINS=MIEUX, association mentale, kanji décomposé). À déclencher
+  quand Matthieu dit « leçon », « go », « drill », « scénario X », « onsen », « test
+  blanc », ou demande à apprendre/réviser du japonais. Ne réinvente RIEN : ce skill
+  est un index d'exécution qui pointe vers les sources de vérité du projet
+  (Japanese/CLAUDE.md, Japanese1.md, DrillTracker.md). Sortie = une session menée,
+  les trackers mis à jour, commit + push auto.
+---
+
+# japanese-lesson
+
+Skill d'exécution, pas de contenu. Tout le savoir pédagogique vit déjà dans le
+projet. Ce fichier garantit que, même hors du Mac (session cloud/mobile où le
+`CLAUDE.md` du dossier ne s'auto-charge pas), la méthode complète reste invocable
+en une fois.
+
+## Avant la première réponse (obligatoire)
+
+1. Lire **`Japanese/CLAUDE.md`** — la bible méthode (les 7 lois, oral-first, SRS,
+   rétention kanji, registre, formats de session). Source de vérité absolue.
+2. Lire la **fin de `Japanese/Japanese1.md`** (3-5 dernières entrées `LXX`) +
+   `Japanese/DrillTracker.md`. Ne JAMAIS reproposer comme neuf un contenu déjà
+   enseigné.
+3. Résumer en 2 lignes où on en est, puis dérouler la boucle.
+
+## La boucle (session type ~30 min ; une leçon longue = plusieurs modules enchaînés)
+
+```
+1. ÉNERGIE  — énergie /5 + streak. Énergie ≤2 → mode onsen ♨️ (acquis facile, zéro neuf).
+2. SRS      — items dus du DrillTracker (≤10), ORAL d'abord, Rouges en priorité.
+3. NOUVEAU  — 1 micro-bloc mono-thème (5-10 min). Pré-test génératif AVANT de montrer.
+4. 🗣️ PROD  — production orale (scénario, shadowing Kyoko : say -v Kyoko "…").
+5. MIOSIS   — 1 ligne de recul + compteurs 1 ligne + teaser. Puis menu X/Y/Z.
+```
+
+## Les non-négociables (extrait — détail dans CLAUDE.md)
+
+- **Oral-first** : tout exercice oral commence par « 🗣️ n'écris pas, dis à voix haute ».
+- **MOINS = MIEUX** : une mnémo = 3-4 mots crus, jamais un paragraphe (feedback L45).
+  Trop de contexte pour peu de kanji = rétention nulle.
+- **Production > reconnaissance** : drills FR→JP par défaut. Sauf lecture de rue =
+  reconnaissance JP→sens, tableau compact.
+- **Association mentale** : chaque item s'ancre à du connu (paire, image, mini-histoire).
+- **Zéro kanji non enseigné** dans titres/exemples/exercices → kana sinon.
+- **Pas d'indices vocab** dans les exercices (phrase française seule).
+- **Registre** : soutenu, chaleureux, direct sans brusquerie. Pas d'argot.
+
+## Kanji — double livrable obligatoire
+
+Tout nouveau kanji enseigné = (A) **fiche HTML** via le skill voisin
+`kanji-stroke-order-html` (écrire un spec JSON puis
+`python3 generate_kanji_card.py spec.json`), rangée dans `Japanese/Lessons/KanjiCards/`,
+numérotation chronologique continue ; (B) **présentation chat** (tableau 1 ligne +
+lien). Protocole rétention : décomposer + récupérer + vivre (jamais photographier).
+
+## Carte 80/20 des situations (pour bâtir une leçon « survie » sans doublon)
+
+Le socle existe déjà — NE PAS le réécrire, y renvoyer :
+- **Cours du vol** (`Japanese1.md`, ACTES I-IV, blocs 1-24) : kit de survie 20 phrases,
+  aéroport, gare/Suica, konbini, hôtel, resto, rue, politesse 3 étages, jiko shoukai,
+  urgences, keigo.
+- **Survie 80/20 orale** (`Japanese1.md`, entrées L48-L49 + leur contenu intégral
+  rapatrié) : L48 (5 motifs pivots + manger/boire + nuance « est-ce possible » + ん
+  explicatif) · L49 (se déplacer, pépins, aller vers les gens + registre détendu).
+
+Une nouvelle leçon situationnelle ajoute la **couche orale/terrain** ou une **nuance
+neuve**, et référence le socle plutôt que de le recopier.
+
+## Fin de session (obligatoire, sans demander)
+
+- Mettre à jour `DrillTracker.md` (état vivant, réécriture libre) : tout neuf ou raté
+  → boîte Rouge avec la date.
+- Append au journal `Japanese1.md` (append-only, heure `HH:MM`) : une entrée `LXX`.
+- Append à `PROGRESS.md` (racine Memory) si déclencheur.
+- **Commit + push auto** (toute modif `Memory/` se commit sans demander).
+
+## Sources de vérité (lire, ne pas dupliquer)
+
+| Fichier | Rôle |
+|---------|------|
+| `Japanese/CLAUDE.md` | méthode complète (bible) — lecture obligatoire |
+| `Japanese/Japanese1.md` | journal append-only + cours longs (vol, diptyque, survie 80/20 L48-L49, restos) |
+| `Japanese/DrillTracker.md` | état SRS vivant (4 boîtes) |
+| `Japanese/Lessons/KanjiCards/` | fiches HTML kanji (001-100 N5, 101+ N4) |
+| `Japanese/_system/skills/kanji-stroke-order-html/` | générateur de fiches kanji |

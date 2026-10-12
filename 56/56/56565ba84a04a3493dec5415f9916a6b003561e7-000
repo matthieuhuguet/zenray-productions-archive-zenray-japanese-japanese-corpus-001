@@ -1,0 +1,177 @@
+#!/usr/bin/env python3
+"""Génère des fiches kanji HTML auto-suffisantes (ordre de tracé KanjiVG).
+
+Usage:
+    python3 generate_kanji_card.py spec.json
+
+`spec.json` = un objet ou une liste d'objets (voir SKILL.md / example_spec.json).
+Aucune dépendance externe (stdlib only). Réseau requis : KanjiVG sur GitHub.
+"""
+import re, math, os, sys, json, urllib.request
+
+# Dossier KanjiCards par défaut, relatif à ce script.
+# Réorganisation 2026-07-03 : skills/ vit sous Japanese/_system/skills/ (un niveau
+# plus profond qu'avant), et KanjiProgress/ a été renommé Lessons/KanjiCards/.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_KANJIPROGRESS = os.path.normpath(os.path.join(_HERE, "..", "..", "..", "Lessons", "KanjiCards"))
+
+KANJIVG_URL = "https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/{cp}.svg"
+
+
+def codepoint(char):
+    """'止' -> '06b62' (format de nom de fichier KanjiVG)."""
+    return format(ord(char), "05x")
+
+
+def parse_paths(svg):
+    """Liste des attributs d des <path>, dans l'ordre des traits."""
+    return re.findall(r'<path[^>]*\bd="([^"]+)"', svg)
+
+
+def parse_numbers(svg):
+    """Positions (x,y) des numéros de traits KanjiVG, dans l'ordre."""
+    out = []
+    for m in re.finditer(r'<text[^>]*transform="matrix\(1 0 0 1 ([\d.]+) ([\d.]+)\)"', svg):
+        out.append((float(m.group(1)), float(m.group(2))))
+    return out
+
+
+def path_endpoints(d):
+    """Interprète un path SVG (M absolu + commandes rel/abs) -> (start, end) absolus."""
+    tokens = re.findall(r'[MmLlCcSsQqTtHhVvZz]|[-+]?\d*\.?\d+(?:e[-+]?\d+)?', d)
+    i = 0
+    cur = (0.0, 0.0)
+    start = None
+    cmd = None
+
+    def num():
+        nonlocal i
+        v = float(tokens[i]); i += 1; return v
+
+    while i < len(tokens):
+        t = tokens[i]
+        if re.match(r'[A-Za-z]', t):
+            cmd = t; i += 1
+        rel = cmd.islower()
+        c = cmd.upper()
+        if c == 'M':
+            x = num(); y = num()
+            cur = (cur[0] + x, cur[1] + y) if rel and start else (x, y)
+            if start is None:
+                start = cur
+            cmd = 'l' if rel else 'L'
+        elif c == 'L':
+            x = num(); y = num(); cur = (cur[0] + x, cur[1] + y) if rel else (x, y)
+        elif c == 'H':
+            x = num(); cur = (cur[0] + x, cur[1]) if rel else (x, cur[1])
+        elif c == 'V':
+            y = num(); cur = (cur[0], cur[1] + y) if rel else (cur[0], y)
+        elif c == 'C':
+            num(); num(); num(); num(); x = num(); y = num()
+            cur = (cur[0] + x, cur[1] + y) if rel else (x, y)
+        elif c == 'S':
+            num(); num(); x = num(); y = num()
+            cur = (cur[0] + x, cur[1] + y) if rel else (x, y)
+        elif c == 'Q':
+            num(); num(); x = num(); y = num()
+            cur = (cur[0] + x, cur[1] + y) if rel else (x, y)
+        elif c == 'T':
+            x = num(); y = num(); cur = (cur[0] + x, cur[1] + y) if rel else (x, y)
+        elif c == 'Z':
+            pass
+        else:
+            i += 1
+    return start, cur
+
+
+def arrow(start, end):
+    dx = end[0] - start[0]; dy = end[1] - start[1]
+    ang = math.degrees(math.atan2(dy, dx))  # y vers le bas
+    dirs = [(0, '→'), (45, '↘'), (90, '↓'), (135, '↙'),
+            (180, '←'), (-135, '↖'), (-90, '↑'), (-45, '↗')]
+    best = min(dirs, key=lambda d: abs((ang - d[0] + 180) % 360 - 180))
+    return best[1]
+
+
+def build_svg(ch, paths, nums):
+    n = len(paths)
+    cols = 6
+    rows = math.ceil(n / cols)
+    W = 8 + cols * 117
+    H = 26 + rows * 117
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">']
+    out.append('<rect width="100%" height="100%" fill="#ffffff"/>')
+    out.append(f'<text x="8" y="13" font-family="sans-serif" font-size="12" fill="#444" font-weight="bold">{ch}  ({n} strokes)</text>')
+    for i in range(n):
+        col = i % cols; row = i // cols
+        tx = 8 + col * 117; ty = 26 + row * 117
+        out.append(f'<g transform="translate({tx},{ty})"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/>')
+        for j in range(i + 1, n):  # futurs (gris clair)
+            out.append(f'<path d="{paths[j]}" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')
+        for j in range(0, i):  # passés (gris foncé)
+            out.append(f'<path d="{paths[j]}" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')
+        out.append(f'<path d="{paths[i]}" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')  # courant
+        s, e = path_endpoints(paths[i])
+        ar = arrow(s, e)
+        lx, ly = nums[i] if i < len(nums) else (max(6, s[0] - 4), max(8, s[1] - 4))
+        out.append(f'<text x="{lx:.2f}" y="{ly:.2f}" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">{i + 1}{ar}</text></g>')
+    out.append('</svg>')
+    return "\n".join(out)
+
+
+CSS = ('body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:980px;margin:2rem auto;padding:0 1.5rem;color:#1a1a1a;line-height:1.55}'
+       'header{border-bottom:2px solid #1a1a1a;padding-bottom:.8rem;margin-bottom:1.4rem}h1{margin:0;font-size:2.2rem;font-weight:600}'
+       '.meta{color:#555;font-size:.95rem;margin-top:.4rem}.meta span{margin-right:1.2rem}'
+       '.strokes{background:#fafafa;border:1px solid #e8e8e8;padding:1rem;border-radius:8px;text-align:center;margin-bottom:1.4rem}.strokes svg{max-width:100%;height:auto}'
+       'h2{font-size:1.15rem;font-weight:600;margin-top:1.6rem;margin-bottom:.5rem;color:#2a2a2a}'
+       '.mnemo{background:#fff8e6;padding:.9rem 1.1rem;border-left:3px solid #d4a017;border-radius:4px}'
+       'table{width:100%;border-collapse:collapse;margin-top:.4rem}td{padding:.4rem .6rem;border-bottom:1px solid #eee}td:first-child{font-weight:500;width:35%}'
+       '.phrase{background:#f0f4ff;padding:.9rem 1.1rem;border-left:3px solid #4a6fa5;border-radius:4px;font-size:1.05rem}')
+
+
+def build_html(k, svg, n):
+    rows = "".join(f"<tr><td>{a}</td><td>{b}</td></tr>" for a, b in k["examples"])
+    return (f'<!DOCTYPE html>\n<html lang="fr"><head><meta charset="UTF-8">'
+            f'<meta name="viewport" content="width=device-width, initial-scale=1">'
+            f'<title>{k["num"]} — {k["char"]} ({k["meaning"]})</title>\n'
+            f'<style>{CSS}</style></head>\n'
+            f'<body><header><h1>{k["num"]} — {k["char"]} · {k["meaning"]}</h1>'
+            f'<div class="meta"><span><strong>ON :</strong> {k["on"]}</span><span><strong>KUN :</strong> {k["kun"]}</span>'
+            f'<span><strong>{n} traits</strong></span><span><strong>Radical :</strong> {k["radical"]}</span></div></header>\n'
+            f'<div class="strokes">{svg}</div>\n'
+            f'<h2>Mnémo (histoire de composants)</h2><div class="mnemo">{k["mnemo"]}</div>\n'
+            f'<h2>Exemples</h2><table>{rows}</table>\n'
+            f'<h2>Phrase</h2><div class="phrase">{k["phrase_jp"]} — <em>{k["phrase_fr"]}</em></div></body></html>\n')
+
+
+def generate_one(k):
+    svg_src = urllib.request.urlopen(KANJIVG_URL.format(cp=codepoint(k["char"])), timeout=20).read().decode("utf-8")
+    paths = parse_paths(svg_src)
+    nums = parse_numbers(svg_src)
+    n = len(paths)
+    html = build_html(k, build_svg(k["char"], paths, nums), n)
+    out_dir = k.get("out_dir") or os.path.join(_KANJIPROGRESS, "101-200 N4")
+    if not os.path.isabs(out_dir):
+        out_dir = os.path.join(_KANJIPROGRESS, out_dir)
+    os.makedirs(out_dir, exist_ok=True)
+    fname = (k.get("file") or f'{k["num"]} {k["char"]}') + ".html"
+    path = os.path.join(out_dir, fname)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+    return n, path
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit("usage: python3 generate_kanji_card.py spec.json")
+    with open(sys.argv[1], encoding="utf-8") as f:
+        spec = json.load(f)
+    items = spec if isinstance(spec, list) else [spec]
+    for k in items:
+        n, path = generate_one(k)
+        print(f'{k["char"]} -> {n} traits -> {os.path.basename(path)}')
+    print(f"OK ({len(items)} fiche·s)")
+
+
+if __name__ == "__main__":
+    main()

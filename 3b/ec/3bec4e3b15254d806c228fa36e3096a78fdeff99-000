@@ -1,0 +1,20 @@
+[
+  {
+    "num": 109,
+    "char": "止",
+    "meaning": "arrêter, stopper",
+    "on": "シ",
+    "kun": "と(まる) / と(める)",
+    "radical": "止 (pied qui s'arrête, pictogramme)",
+    "mnemo": "Un <strong>pied 止</strong> planté au sol qui refuse d'avancer = <strong>ARRÊT</strong>. C'est le 止 de 止まれ (STOP) et de 禁止 (interdiction).",
+    "examples": [
+      ["止まれ — とまれ", "STOP (panneau routier rouge)"],
+      ["禁止 — きんし", "interdiction"],
+      ["中止 — ちゅうし", "annulation"]
+    ],
+    "phrase_jp": "ここで止まってください。",
+    "phrase_fr": "Arrêtez-vous ici, s'il vous plaît.",
+    "file": "109 止 Tomaru Shi",
+    "out_dir": "101-200 N4"
+  }
+]

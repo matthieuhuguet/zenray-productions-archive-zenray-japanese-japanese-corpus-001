@@ -1,0 +1,133 @@
+---
+name: lesson-card-html
+description: >
+  Génère une fiche de leçon HTML auto-suffisante, mobile-first (portrait-safe),
+  pour TOUTE leçon destinée à être lue par Matthieu — vocab, kanji nouveaux,
+  groupes de 16-64 mots. Règle absolue depuis L64 (2026-07-02) : jamais de .md
+  pour une leçon, toujours cette fiche. Pour un kanji nouveau, COMBINE
+  kanji-stroke-order-html via le champ `kanji_cards` : tracé KanjiVG réel
+  inliné + mnémo + vocab dans une carte repliable, dans le MÊME fichier que
+  le reste de la leçon (jamais un fichier séparé par kanji dans ce cas).
+---
+
+# lesson-card-html
+
+Skill créé le 2026-06-30 après relecture intégrale de `Japanese/CLAUDE.md` et
+`Japanese/Japanese1.md`, suite au constat de Matthieu : la leçon L60 (64 plats
+en tableaux markdown 4 colonnes) débordait en portrait sur iPhone — lisible
+seulement en paysage. Les fiches kanji, elles, restaient lisibles (déjà
+mobile-first). Ce skill applique le même traitement au **vocabulaire en
+volume**.
+
+## Le problème résolu
+
+Un tableau markdown à 3-4 colonnes ne s'enroule pas : sur un écran de 380px de
+large en portrait, les colonnes de droite sont tronquées (`nouill…`, `udon …`).
+La fiche générée ici remplace le tableau par des **lignes qui s'enroulent**
+(flex-wrap : kanji+kana sur une ligne, sens sur la ligne suivante si besoin),
+regroupées en sections **repliables natives** (`<details>`, zéro JavaScript),
+qui s'ouvrent/se ferment au tap et s'impriment proprement en PDF.
+
+## Conventions du projet encodées dans le générateur (relecture complète)
+
+- **Furigana toujours avec le kanji** (règle L51, non négociable) : chaque
+  mot japonais peut porter sa lecture entre parenthèses, jamais de kanji nu.
+- **Icônes de registre** ○ casual · ◇ neutre · ◆ formel (convention L52),
+  rendues en pastille colorée.
+- **Groupes de 16** (convention L52/L60) : `<details>` par groupe, avec le
+  compte affiché dans le résumé.
+- **MOINS = MIEWX / P0** : zéro paragraphe, une ligne par mot, aucune
+  décoration superflue.
+- **Kanji-racines à effet de levier** (convention L59/L60) : présentées à
+  part, en mini-cartes en haut de la fiche, avec lien cliquable vers leur
+  fiche complète dans `KanjiProgress/` si fournie (`card_link`).
+- **Identité visuelle kanji-stroke-order-html** : même famille de police
+  système, mêmes couleurs (mnémo `#fff8e6`/bordure ambre, encadrés doux),
+  pour que tout le corpus (kanji + leçons) ait un look cohérent.
+- **Auto-suffisant** : zéro dépendance externe (CSS inliné, aucune image
+  distante, aucun JS) — s'ouvre nativement sur iPhone (Files/Safari) hors
+  ligne, comme les fiches kanji.
+- **Viewport mobile** obligatoire (`width=device-width, initial-scale=1`).
+- **Imprimable** : règle `@media print` qui force l'affichage de tous les
+  groupes même fermés — Partager → Imprimer sur iPhone produit un PDF propre.
+
+## Format du spec JSON
+
+```json
+{
+  "title": "L60 — 64 plats & mots de menu du Japon",
+  "subtitle": "7 kanji-racines + 64 mots, 4 groupes de 16",
+  "legend": "○ casual · ◇ neutre · ◆ formel",
+  "file": "L60_restos_japon",
+  "out_dir": "L60_restos_japon",
+  "roots": [
+    {"kanji": "牛", "kun": "うし", "on": "ギュウ", "meaning": "bœuf",
+     "unlocks": ["牛丼", "牛肉", "牛乳"],
+     "card_link": "../KanjiProgress/101-200 N4/131 牛 Ushi Gyuu.html"}
+  ],
+  "groups": [
+    {"name": "G1 — Bols & sets", "items": [
+      {"jp": "定食", "kana": "ていしょく", "meaning": "menu fixe", "note": "revu"},
+      {"jp": "かつ丼", "kana": "かつどん", "meaning": "bol porc pané + œuf"}
+    ]}
+  ]
+}
+```
+
+| Champ | Obligatoire | Rôle |
+|-------|-------------|------|
+| `title` | oui | titre affiché + nom de fichier par défaut |
+| `subtitle` | non | sous-titre (contexte, compteur) |
+| `legend` | non | légende des icônes de registre |
+| `roots` | non | kanji-racines en mini-cartes (kanji, kun, on, meaning, unlocks[], card_link optionnel) |
+| `groups` | oui | liste de groupes `{name, items[]}` |
+| `items[].jp` | oui | mot japonais (kanji/kana) |
+| `items[].kana` | non | lecture (affichée entre parenthèses) |
+| `items[].meaning` | oui | sens français |
+| `items[].register` | non | `○`/`◇`/`◆` |
+| `items[].note` | non | remarque courte (ex : "déjà su") |
+| `file` / `out_dir` | non | nom de fichier / sous-dossier de sortie |
+| `kanji_cards` | non | **fusion avec kanji-stroke-order-html** (L64) : liste de kanji nouveaux avec tracé KanjiVG inliné. Voir ci-dessous. |
+
+## Champ `kanji_cards` (fusion des deux skills, L64 2026-07-02)
+
+Pour toute leçon qui introduit des kanji nouveaux (pas juste du vocab avec kanji déjà connus), utiliser `kanji_cards` plutôt que `roots` : chaque entrée devient une carte repliable avec le VRAI tracé de traits (récupéré depuis KanjiVG, même logique que `kanji-stroke-order-html`, dupliquée en interne pour que le skill reste auto-suffisant — aucune dépendance croisée fragile).
+
+```json
+{
+  "kanji_cards": [
+    {"char": "計", "on": "ケイ", "kun": "はか(る)", "radical": "言（parole）+ 十（dix）",
+     "mnemo": "Parole (<strong>言</strong>) comptée jusqu'à dix (<strong>十</strong>) = calculer.",
+     "vocab_jp": "時計", "vocab_kana": "とけい", "vocab_fr": "horloge, montre"}
+  ]
+}
+```
+
+| Champ | Obligatoire | Rôle |
+|-------|-------------|------|
+| `char` | oui | le kanji (codepoint KanjiVG dérivé automatiquement) |
+| `on` / `kun` | non | lectures (« — » si absente) |
+| `radical` | non | décomposition courte |
+| `mnemo` | non | histoire de composants (HTML autorisé : `<strong>`) |
+| `vocab_jp` / `vocab_kana` / `vocab_fr` | non | mot d'exemple qui introduit le kanji |
+
+Nécessite un accès réseau (KanjiVG sur GitHub) au moment de la génération ; si indisponible, la carte affiche « tracé indisponible hors ligne » plutôt que de planter — jamais de `<img>` externe cassé.
+
+**Bloc protocole d'étude, automatique (feedback Matthieu, 2026-07-02) :** dès que `kanji_cards` est non vide, un encadré vert fixe « Comment graver chaque kanji » est inséré automatiquement en tête (4 étapes : lire l'histoire à voix haute → recopier en la disant, par salves de 10-15 → se tester avant de vérifier → rappel espacé le soir). Ce n'est PAS un champ du spec, c'est codé en dur dans `STUDY_PROTOCOL_HTML` — la fiche ne peut plus jamais partir sans cette instruction, même si on oublie de le demander.
+
+## Usage
+
+```bash
+python3 generate_lesson_card.py spec.json
+```
+
+Sortie dans `Japanese/Lessons/<out_dir ou racine>/<file>.html` (dossier
+créé automatiquement, nouvelle convention parallèle à `KanjiProgress/`).
+
+## Quand l'utiliser vs le tableau markdown dans le chat
+
+- **Chat markdown** : reste le format par défaut pour une leçon courte
+  (≤10-15 items) — rapide à lire, pas besoin de fichier.
+- **Cette fiche HTML** : dès que le contenu dépasse ~16 items, contient des
+  kanji-racines à mettre en avant, ou que Matthieu signale un problème de
+  lecture mobile / demande un PDF/HTML.

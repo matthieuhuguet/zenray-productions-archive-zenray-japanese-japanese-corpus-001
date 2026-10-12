@@ -1,0 +1,39 @@
+# Japanese Project : Claude Instructions et Routage Canonique
+
+## SOURCE DE VERITE UNIQUE : SKILL `zenray-learn-japanese`
+
+L'integralite des regles pedagogiques, de la methode, des templates de lecon, des consignes kanji, de la posture epicurieuse, des hard rules techniques, et l'historique complet des feedbacks de L1 a L108+ sont desormais centralises et gouvernes par le skill canonique unique :
+
+```
+/Users/zenray/.claude/skills/zenray-learn-japanese/SKILL.md
+```
+(Miroir local dans le depot : `Memory/Skills/zenray-learn-japanese/SKILL.md`)
+
+Toute modification des regles de methode s'effectue OBLIGATOIREMENT dans ce skill canonique, puis se synchronise via :
+`zsh ~/.claude/skills/skill-sync/scripts/sync-skill.sh zenray-learn-japanese`
+
+Aucune seconde verite n'est maintenue dans ce fichier afin d'eliminer tout risque de divergence.
+
+---
+
+## ARCHITECTURE DES SOURCES DU DOSSIER
+
+1. Le Corpus vivant (Strictement Append-Only) :
+   `Japanese/Japanese1.md`
+   Source de verite historique unique des lecons, scores, drills, et vocabulaire. Ne JAMAIS supprimer ni tronquer de ligne passee. C'est ce fichier qui alimente directement le site ZenRayJapanese.
+
+2. Le Tracker SRS vivant :
+   `Japanese/DrillTracker.md`
+   Etat dynamique des revisions espacees (Rouge, Orange, Vert, Acquis). Reecrit a chaque session.
+
+3. L'indexeur pour le site ZenRayJapanese :
+   `Japanese/Scripts/build-japanese-index.py`
+   Script Python qui lit les tableaux a 2 colonnes (`| Mot | Sens |`) de `Japanese1.md` et regenere `Japanese/Site/japanese.json`.
+   Commande de verification : `python3 Scripts/build-japanese-index.py --verify`.
+
+4. Commit et Push automatique vers GitHub (P0 absolu) :
+   Toute modification apportee dans ce dossier (lecon, vocabulaire, index, tracker) est immediatement commitee et poussee sur origin main sans demander de confirmation.
+
+5. Journal global transverse :
+   Chaque avancee notable fait l'objet d'une entree courte dans `/Users/zenray/.claude/PROGRESS.md` via :
+   `node ~/.claude/skills/progress/scripts/progress.mjs append`

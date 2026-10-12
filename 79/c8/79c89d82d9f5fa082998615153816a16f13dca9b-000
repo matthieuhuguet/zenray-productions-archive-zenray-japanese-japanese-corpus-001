@@ -1,0 +1,58 @@
+---
+name: kanji-stroke-order-html
+description: Génère une fiche HTML auto-suffisante pour un kanji (grille d'ordre de tracé trait par trait à partir des vrais tracés KanjiVG, mnémo, exemples, phrase). À utiliser dès qu'un nouveau kanji est enseigné dans le projet japonais. Sortie = un fichier .html sans dépendance externe (SVG inliné), rangé dans Japanese/Lessons/KanjiCards/.
+---
+
+# kanji-stroke-order-html
+
+Skill portable (vendorisé dans le repo Memory) qui produit les fiches kanji du
+projet japonais. Reproduit le format validé des fiches `Japanese/Lessons/KanjiCards/`
+en récupérant les **vrais tracés depuis KanjiVG** puis en les habillant en HTML
+auto-suffisant.
+
+## Quand l'utiliser
+
+- À CHAQUE nouveau kanji enseigné (règle `Japanese/CLAUDE.md` : nouveau kanji =
+  2 livrables → (A) cette fiche HTML, (B) présentation chat).
+- Pour regénérer/corriger une fiche existante.
+
+## Pré-requis
+
+- Python 3 (stdlib uniquement, aucune dépendance).
+- Accès réseau à `raw.githubusercontent.com` (KanjiVG). Le codepoint du fichier
+  KanjiVG est dérivé automatiquement du caractère (`ord(char)` → hex 5 chiffres).
+
+## Comment l'invoquer
+
+1. Écrire un fichier JSON décrivant le(s) kanji (voir `example_spec.json`).
+2. Lancer :
+
+```bash
+python3 generate_kanji_card.py spec.json
+```
+
+Les fiches sont écrites dans le `out_dir` indiqué dans le spec (par défaut
+`Japanese/Lessons/KanjiCards/101-200 N4/`), nommées `NNN 漢 Kun On.html`.
+
+## Format du spec (un objet ou une liste d'objets)
+
+| Champ | Obligatoire | Rôle |
+|-------|-------------|------|
+| `num` | oui | numéro chronologique de la fiche |
+| `char` | oui | le kanji (codepoint KanjiVG auto-dérivé) |
+| `meaning` | oui | sens en français |
+| `on` / `kun` | oui | lectures (katakana / hiragana), `—` si aucune |
+| `radical` | oui | décomposition en briques |
+| `mnemo` | oui | histoire de composants COURTE (HTML autorisé : `<strong>`). Feedback L45 : scène crue, pas un paragraphe. |
+| `examples` | oui | liste de paires `["mot — lecture", "sens"]` (3-4) |
+| `phrase_jp` / `phrase_fr` | oui | 1 phrase d'exemple + sa traduction |
+| `file` | non | nom de fichier sans extension ; défaut `"{num} {char}"` |
+| `out_dir` | non | dossier de sortie (défaut `101-200 N4`) |
+
+## Garanties de format (ne pas casser)
+
+- SVG **inliné**, jamais d'`<img>` externe.
+- Grille 6 colonnes, une cellule par trait : traits passés en gris foncé, trait
+  courant en noir épais, traits futurs en gris clair, numéro + flèche de
+  direction en rouge.
+- 1-2 lectures principales seulement, ordre des traits obligatoire.

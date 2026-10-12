@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+# Génère les fiches HTML des kanjis de cuisson (L42, jour 4). SVG inliné, 1 fichier auto-suffisant.
+import re, pathlib
+
+OUT = pathlib.Path("/Users/zenray/Create/Build/Memory/Japanese/Lessons/KanjiCards/101-200 N4")
+TPL = """<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>{nnn} — {kanji} ({sens})</title>
+<style>
+  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.55; }}
+  header {{ border-bottom: 2px solid #1a1a1a; padding-bottom: 0.8rem; margin-bottom: 1.4rem; }}
+  h1 {{ margin: 0; font-size: 2.2rem; font-weight: 600; }}
+  .meta {{ color: #555; font-size: 0.95rem; margin-top: 0.4rem; }}
+  .meta span {{ margin-right: 1.2rem; }}
+  .strokes {{ background: #fafafa; border: 1px solid #e8e8e8; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1.4rem; }}
+  .strokes svg {{ max-width: 100%; height: auto; }}
+  h2 {{ font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem; color: #2a2a2a; }}
+  .mnemo {{ background: #fff8e6; padding: 0.9rem 1.1rem; border-left: 3px solid #d4a017; border-radius: 4px; }}
+  table {{ width: 100%; border-collapse: collapse; margin-top: 0.4rem; }}
+  td {{ padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }}
+  td:first-child {{ font-weight: 500; width: 35%; }}
+  .phrase {{ background: #f0f4ff; padding: 0.9rem 1.1rem; border-left: 3px solid #4a6fa5; border-radius: 4px; font-size: 1.05rem; }}
+</style>
+</head>
+<body>
+<header>
+  <h1>{nnn} — {kanji} · {sens}</h1>
+  <div class="meta">
+    <span><strong>ON :</strong> {on}</span>
+    <span><strong>KUN :</strong> {kun}</span>
+    <span><strong>{traits} traits</strong></span>
+    <span><strong>Radical :</strong> {radical}</span>
+  </div>
+</header>
+
+<div class="strokes">
+{svg}
+</div>
+
+<h2>Mnémo</h2>
+<div class="mnemo">{mnemo}</div>
+
+<h2>Exemples</h2>
+<table>
+{examples}
+</table>
+
+<h2>Phrase</h2>
+<div class="phrase">{phrase_jp} — <em>{phrase_fr}</em></div>
+</body>
+</html>
+"""
+
+def svg(path):
+    s = pathlib.Path(path).read_text(encoding="utf-8")
+    return re.sub(r"<\?xml[^>]*\?>\s*", "", s).strip()
+
+KANJIS = [
+    dict(nnn="101", kanji="焼", sens="griller, cuire au feu", on="ショウ", kun="や(く) / や(ける)",
+         traits="12", radical="火 (feu, à gauche)", fname="101 焼 Yaku Shou.html",
+         svg=svg("/tmp/k_yaki.svg"),
+         mnemo="À <strong>gauche, le feu 火</strong> qui lèche la viande. Le reste du kanji = la grille au-dessus des braises. Tu vois 火 collé sur le flanc → flamme directe → <strong>grillé</strong>. C'est le kanji du yakitori et de l'okonomiyaki.",
+         examples="<tr><td>焼き鳥 — やきとり</td><td>brochette de poulet grillé</td></tr>"
+                  "<tr><td>焼き魚 — やきざかな</td><td>poisson grillé</td></tr>"
+                  "<tr><td>お好み焼き — おこのみやき</td><td>okonomiyaki (galette grillée)</td></tr>",
+         phrase_jp="焼き魚定食をください。", phrase_fr="Le menu poisson grillé, s'il vous plaît."),
+    dict(nnn="102", kanji="揚", sens="frire (dans l'huile)", on="ヨウ", kun="あ(げる)",
+         traits="12", radical="扌 (main, à gauche)", fname="102 揚 Ageru You.html",
+         svg=svg("/tmp/k_age.svg"),
+         mnemo="À gauche, la <strong>main 扌</strong>. La main qui <strong>plonge</strong> l'aliment dans le bain d'huile bouillante et le <strong>relève</strong> (あげる = lever/monter). Pas de feu visible ici : c'est l'huile, pas la flamme. Main qui monte → friture.",
+         examples="<tr><td>唐揚げ — からあげ</td><td>poulet frit (karaage)</td></tr>"
+                  "<tr><td>揚げ出し豆腐 — あげだしどうふ</td><td>tofu frit en bouillon</td></tr>"
+                  "<tr><td>天ぷら — てんぷら</td><td>tempura (beignet frit)</td></tr>",
+         phrase_jp="鶏の唐揚げをください。", phrase_fr="Du poulet frit, s'il vous plaît."),
+    dict(nnn="103", kanji="煮", sens="mijoter, cuire dans l'eau", on="シャ", kun="に(る)",
+         traits="12", radical="灬 (feu/braises, en bas)", fname="103 煮 Niru Sha.html",
+         svg=svg("/tmp/k_ni.svg"),
+         mnemo="En <strong>bas, les 4 points 灬</strong> = les braises sous la marmite. Le feu n'est pas sur le côté (flamme vive) mais <strong>dessous</strong> : il chauffe doucement, longtemps, la marmite posée par-dessus. Feu en dessous → <strong>mijoté</strong>.",
+         examples="<tr><td>煮物 — にもの</td><td>plat mijoté</td></tr>"
+                  "<tr><td>肉じゃが — にくじゃが</td><td>bœuf-pommes de terre mijotés</td></tr>"
+                  "<tr><td>煮魚 — にざかな</td><td>poisson mijoté</td></tr>",
+         phrase_jp="今日の煮物は何ですか。", phrase_fr="Quel est le plat mijoté du jour ?"),
+]
+
+for k in KANJIS:
+    html = TPL.format(**k)
+    (OUT / k["fname"]).write_text(html, encoding="utf-8")
+    print("écrit:", k["fname"])
