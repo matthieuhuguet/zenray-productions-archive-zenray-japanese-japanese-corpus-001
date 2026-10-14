@@ -1,0 +1,82 @@
+{
+  "checkedAt": "14 October 2026",
+  "release": "aba956b0fb5ab395",
+  "purpose": "Exact recovery snapshot; not an alternate authoring source",
+  "files": [
+    {
+      "path": "Scripts/CompileCoverageAudit.py",
+      "bytes": 9472,
+      "sha256": "c6f0a8cbd3f846df7f7d51799d5feb63bd1b39d299845ebfc24690c462a775fc"
+    },
+    {
+      "path": "Scripts/TestCoverageAudit.py",
+      "bytes": 8340,
+      "sha256": "d27c3c87488f180be324f910c3c27a5c3ffba0993767d0f995474aa4da4ff96d"
+    },
+    {
+      "path": "Scripts/PrepareCoverageAudit.py",
+      "bytes": 3448,
+      "sha256": "9ef1882fe72afac6f1503bb215220ff53ac5394727482c1006c3c6320eea9751"
+    },
+    {
+      "path": "research/coverage/CoverageAuditParameters.json",
+      "bytes": 859,
+      "sha256": "40883e4313d6e1586d3eeec4244589c223dc200a701a85a12264b751b6ac0ce6"
+    },
+    {
+      "path": "research/coverage/N5CandidateLinks.json",
+      "bytes": 9465,
+      "sha256": "17a2b3fe9c45ae3f8f5347c6f17a74748e7d380421af19e2a4681159215ee1d6"
+    },
+    {
+      "path": "research/coverage/N5CoverageConsensus.json",
+      "bytes": 550097,
+      "sha256": "7f49cca97c872cad915220767612f9abe1a06ebba7f7ec57765f355e1dc74668"
+    },
+    {
+      "path": "research/coverage/N5OpenRequirements.json",
+      "bytes": 42629,
+      "sha256": "3a59c45a9017dcfa9d91855ec80b9b52407c9edcc44c5693cedcaab8738e2d05"
+    },
+    {
+      "path": "review/N5CoverageAuditInitialPacket.json",
+      "bytes": 500089,
+      "sha256": "114eb644bfeb87eecd8864d52e861487145857b842cfc841aa11f1cf33c4b346"
+    },
+    {
+      "path": "review/N5CoverageAuditPacket.json",
+      "bytes": 725965,
+      "sha256": "26cb6593c2fd907bae6b54b5a6a36972939548718a57242ec29e59911be2fb16"
+    },
+    {
+      "path": "review/N5CoverageRefreshPacket.json",
+      "bytes": 430540,
+      "sha256": "779b88c2e93d93da1f3a5e171f7227f8f18cca3e9f6e205c48f4d17c1a1e1a43"
+    },
+    {
+      "path": "review/N5CoverageFirst.json",
+      "bytes": 100202,
+      "sha256": "735a6f29f7f39865f68752ddee6adb05c4f45af3d0bd22147f339f41a2cbefc8"
+    },
+    {
+      "path": "review/N5CoverageSecond.json",
+      "bytes": 157421,
+      "sha256": "ac075ee19dd393723c015ac6451fe928d87beeafb91ada161a9de126ae4e8072"
+    },
+    {
+      "path": "review/N5CoverageRefreshFirst.json",
+      "bytes": 56741,
+      "sha256": "ecda229a08147ff1048f8c961a08bea6cebd974eef75202ed44e49dd49448fa2"
+    },
+    {
+      "path": "review/N5CoverageRefreshSecond.json",
+      "bytes": 58772,
+      "sha256": "9e663adf496ed5f0e115b89a2d843e0e08a970d7361970c5a3e4860c4253cb8a"
+    },
+    {
+      "path": "verification/N5CoverageRefreshVerification.json",
+      "bytes": 420,
+      "sha256": "1b5c99948fdeb2833d0a7301920b5f6b8c4ef4c6b22d4093c101349a9dc4ce80"
+    }
+  ]
+}

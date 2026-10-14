@@ -1,0 +1,87 @@
+{
+  "checkedAt": "14 October 2026",
+  "release": "29324aff31146a9c",
+  "purpose": "Recovery snapshot; not an alternate authoring source",
+  "files": [
+    {
+      "path": "research/language/FoundationExpansion05Seeds.json",
+      "sha256": "08299d1e1b701c44a04170b97295f792355d48281fffca56535c7632a8dde338",
+      "bytes": 31954
+    },
+    {
+      "path": "research/language/ExpansionParameters.json",
+      "sha256": "56fbef299fb8515d067581d540dd84148f2415bd404d1771f1bd1b6a3d5c7cc3",
+      "bytes": 25282
+    },
+    {
+      "path": "research/language/LanguageExpansionRecords.json",
+      "sha256": "a05d312e58d959fee78edd9c827a647d375efa2a789bb1838eb289aa811b5e32",
+      "bytes": 411270
+    },
+    {
+      "path": "settings.json",
+      "sha256": "6ef9afc2f99bbc99302d012d61e9b63739b34134147b6b0cd024940f4c002acb",
+      "bytes": 12653
+    },
+    {
+      "path": "review/FoundationExpansion05BeforeHashes.json",
+      "sha256": "97f3c5ad1964ecf7a25bf0d7f0b406ffc327bbac6df3adb52e9413bc7da6004b",
+      "bytes": 13695
+    },
+    {
+      "path": "review/FoundationExpansion05ReviewPacket.json",
+      "sha256": "9988094b5d76707e4e49db8065571ebcd38da10ea3b149c5c464402ff8722c89",
+      "bytes": 82439
+    },
+    {
+      "path": "review/FoundationExpansion05CorrectionPacket.json",
+      "sha256": "9e4ae5cd561422c013d10877cabb81a64d40d3f2f181e8e15fc62cb1b00bc80f",
+      "bytes": 10429
+    },
+    {
+      "path": "review/FoundationExpansion05First.json",
+      "sha256": "1ce4663a3b1ea3e39d6870e69090941e060e2a4aa0fdfce68e1e9f415e46f0bc",
+      "bytes": 11588
+    },
+    {
+      "path": "review/FoundationExpansion05CorrectionsFirst.json",
+      "sha256": "a9b3533a55b12b5a0c1ea8dd529c4c479534b0db5f7da4fe5edd8531bd6068c7",
+      "bytes": 1275
+    },
+    {
+      "path": "review/FoundationExpansion05Second.json",
+      "sha256": "5959de6d494124651da5e7e7a61ff0167c98e1cbc965a80287a4744c44ff4269",
+      "bytes": 10348
+    },
+    {
+      "path": "verification/FoundationExpansion05Verification.json",
+      "sha256": "942fc579c9e53331a5a63212a6b8cd0ac289629567403f7f639b745056853413",
+      "bytes": 345
+    },
+    {
+      "path": "research/coverage/foundation-sources/a439ec5e9106304c.html",
+      "sha256": "0d0a805f1998b4986546dd931431b60437e6236cf49cea5d176f7094c713c0a2",
+      "bytes": 35257
+    },
+    {
+      "path": "research/coverage/foundation-sources/a728892677912cf2.html",
+      "sha256": "fcb30721559039a1ee99ffa267696bba6eb07f415a05c8be33d65d6e235d755c",
+      "bytes": 42349
+    },
+    {
+      "path": "research/coverage/foundation-sources/80ae1f8c507f217c.html",
+      "sha256": "8146232b089a1f199b41c1e3f863f4eca58bffefe804cd6208733160e083a849",
+      "bytes": 37084
+    },
+    {
+      "path": "research/coverage/foundation-sources/a3a32f9b75413c74.html",
+      "sha256": "6b19ae555741d6131281196fc1c678ed9940d165a91a850b38a4775a04fbd558",
+      "bytes": 32635
+    },
+    {
+      "path": "research/coverage/foundation-sources/532b3d6d2b70f0d7.html",
+      "sha256": "f5c580a3c409bc480cbc8fa28db7f031e9d00071fb95e7affd714a541fd128f0",
+      "bytes": 6156
+    }
+  ]
+}

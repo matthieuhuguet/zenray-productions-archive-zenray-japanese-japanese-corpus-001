@@ -1,0 +1,82 @@
+{
+  "checkedAt": "14 October 2026",
+  "release": "8148e6b6ebd8e4c7",
+  "purpose": "Recovery snapshot; not an alternate authoring source",
+  "files": [
+    {
+      "path": "research/language/FoundationExpansion03Seeds.json",
+      "sha256": "51f73cdbfebb758834e5d8b6578823e00480d37cb00bd1e55930d2d0e0b87b97",
+      "bytes": 20093
+    },
+    {
+      "path": "research/language/ExpansionParameters.json",
+      "sha256": "fb18194f173428337cff51f3275234dc0eee7c3c91be232db3afbe5bb4eb4f33",
+      "bytes": 12929
+    },
+    {
+      "path": "research/language/LanguageExpansionRecords.json",
+      "sha256": "637af56ee7b769481669fef3be9292341b05833cb2d5cac1fac81bb2fc222abe",
+      "bytes": 277677
+    },
+    {
+      "path": "settings.json",
+      "sha256": "475ac5ce68aa993045df0222504db96ed1b14164f778ab996c63c0d151c838eb",
+      "bytes": 9378
+    },
+    {
+      "path": "Scripts/BuildExpansion.py",
+      "sha256": "cba046755346d47466cca8629d8cada10ef0349bf2c72b00f915ad1d549c961c",
+      "bytes": 4781
+    },
+    {
+      "path": "Scripts/Corpus.py",
+      "sha256": "6ba2a94bb5738ce12226efb10417853df6f778eb71b5a051b28ddc758c8cef7c",
+      "bytes": 27925
+    },
+    {
+      "path": "Scripts/PrepareApprovals.py",
+      "sha256": "a699587bec6c7b4bb76d26cf9320b3a45834e7de8d38f4f4c1d3a09637160e8b",
+      "bytes": 5536
+    },
+    {
+      "path": "Scripts/TestApprovals.py",
+      "sha256": "6d74ffc730ee424d40f1b3708f9365665556007699cf23aa500310c38e5a9ed9",
+      "bytes": 2337
+    },
+    {
+      "path": "Scripts/VerifyCorpus.py",
+      "sha256": "32b723b4ec4765cd579babc0f2bf20854c199f4a0f8459655658fcd1c82fa342",
+      "bytes": 4048
+    },
+    {
+      "path": "Scripts/VerifyExpansionProduction.mjs",
+      "sha256": "40ec9405c3e7d54ab665e9d3861c8c5ff32be7c8988871bfde7e86a65900ffa4",
+      "bytes": 1845
+    },
+    {
+      "path": "review/FoundationExpansion03ReviewPacket.json",
+      "sha256": "adec29479e8c308a5dd37268fe5a59d270a29684a5afc2a912e78020da775853",
+      "bytes": 58022
+    },
+    {
+      "path": "review/FoundationExpansion03First.json",
+      "sha256": "4f69e9078c439c0a060b8dc482b5382904b17ecd28cb635793954574206d0ba4",
+      "bytes": 9769
+    },
+    {
+      "path": "review/FoundationExpansion03CorrectionsFirst.json",
+      "sha256": "1085de98946848ab3373a99b15fa8314d6c759fd6ec8f94f65b479c5aa052882",
+      "bytes": 1506
+    },
+    {
+      "path": "review/FoundationExpansion03Second.json",
+      "sha256": "a48a9e7c399df4765fab70053421a7d972c38cc68731ad7d05d4c5478fd9b335",
+      "bytes": 7234
+    },
+    {
+      "path": "verification/FoundationExpansion03Verification.json",
+      "sha256": "36bbd36ad4c810582f82031d290836908a57622c77b3d3fa9229e5b4ebe0076b",
+      "bytes": 345
+    }
+  ]
+}

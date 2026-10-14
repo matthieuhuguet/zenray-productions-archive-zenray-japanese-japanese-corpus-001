@@ -1,0 +1,102 @@
+{
+  "checkedAt": "14 October 2026",
+  "release": "aba956b0fb5ab395",
+  "purpose": "Recovery snapshot; not an alternate authoring source",
+  "files": [
+    {
+      "path": "research/language/FoundationExpansion04Seeds.json",
+      "sha256": "ca31367faf1588749e67fba09b4c12bb5ac301d1fbf2cc336291f7079c83352e",
+      "bytes": 24953
+    },
+    {
+      "path": "research/language/ExpansionParameters.json",
+      "sha256": "4b99bdd638b2da5c04ce66153608d1c0a890662d2eb89c5d4af4a4d1e8761821",
+      "bytes": 17551
+    },
+    {
+      "path": "research/language/LanguageExpansionRecords.json",
+      "sha256": "2bfb36b0af457ac12f788ce19d69424b2fe4b8099bc38c4fca1d02e1267dba64",
+      "bytes": 335059
+    },
+    {
+      "path": "settings.json",
+      "sha256": "a572b3b5090fb7890f37cc7512ee197700e35f22ef79955a6d5ed591618c78bb",
+      "bytes": 10918
+    },
+    {
+      "path": "Scripts/BuildExpansion.py",
+      "sha256": "21f301e39f9442a62e518ade8af6c2b776f398066a5bee183512ec9a3b1d5f18",
+      "bytes": 5879
+    },
+    {
+      "path": "Scripts/Corpus.py",
+      "sha256": "6ba2a94bb5738ce12226efb10417853df6f778eb71b5a051b28ddc758c8cef7c",
+      "bytes": 27925
+    },
+    {
+      "path": "Scripts/PrepareApprovals.py",
+      "sha256": "a699587bec6c7b4bb76d26cf9320b3a45834e7de8d38f4f4c1d3a09637160e8b",
+      "bytes": 5536
+    },
+    {
+      "path": "Scripts/TestApprovals.py",
+      "sha256": "6d74ffc730ee424d40f1b3708f9365665556007699cf23aa500310c38e5a9ed9",
+      "bytes": 2337
+    },
+    {
+      "path": "Scripts/VerifyCorpus.py",
+      "sha256": "32b723b4ec4765cd579babc0f2bf20854c199f4a0f8459655658fcd1c82fa342",
+      "bytes": 4048
+    },
+    {
+      "path": "Scripts/VerifyExpansionProduction.mjs",
+      "sha256": "eb6689c43e879ad5df62e30fbf8a9d295904c3d03546db17e2b9f9011d0c2564",
+      "bytes": 2031
+    },
+    {
+      "path": "review/FoundationExpansion04ReviewPacket.json",
+      "sha256": "967238193f44a473570624a32f9893f5354e215d2900df73ef2c32ad61f8df8e",
+      "bytes": 62192
+    },
+    {
+      "path": "review/FoundationExpansion04First.json",
+      "sha256": "1a56e17dcc642409cc73ff45d75864ec064b0b964b7e1bfd24b81357b9497e8d",
+      "bytes": 12274
+    },
+    {
+      "path": "review/FoundationExpansion04CorrectionsFirst.json",
+      "sha256": "911d6cc1f748e47488d1daa80cabe35499d83d72517a4d59731f81514528d9ad",
+      "bytes": 7021
+    },
+    {
+      "path": "review/FoundationExpansion04FinalCorrectionsFirst.json",
+      "sha256": "0aee93ce0c8286736b22358c8da9aa1d3275cbc18310a80873cfa0233bf2ded6",
+      "bytes": 2179
+    },
+    {
+      "path": "review/FoundationExpansion04Second.json",
+      "sha256": "2bb8c31cda1b8e1282c0ff53911e53f8bcabf25f30b5a31d70b0c8a85eff758e",
+      "bytes": 7439
+    },
+    {
+      "path": "verification/FoundationExpansion04Verification.json",
+      "sha256": "b7a4ab1b475df1c7047c5622b9b6f72f053d42f348a1101f7e7ab00c8d324da0",
+      "bytes": 345
+    },
+    {
+      "path": "research/coverage/foundation-sources/e25446e26ddb6510.html",
+      "sha256": "093bb7b522fb0a0853fa30aa017161236b48707588c9734b7a5a67133cae96b8",
+      "bytes": 60415
+    },
+    {
+      "path": "research/coverage/foundation-sources/8276a731a8b13c69.html",
+      "sha256": "c5838a7b347f636794a6e9438f280ae34e42dee06ec3093d4f2781cf557bc688",
+      "bytes": 50215
+    },
+    {
+      "path": "research/coverage/foundation-sources/5f00d5088aeec486.html",
+      "sha256": "99cd80251acbd8c5271c67f98d1c4dbc6dd5887e9cb4e0068160be1f70faf719",
+      "bytes": 151553
+    }
+  ]
+}

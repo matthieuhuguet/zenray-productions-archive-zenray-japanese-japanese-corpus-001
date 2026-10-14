@@ -1,0 +1,62 @@
+{
+  "checkedAt": "14 October 2026",
+  "release": "29324aff31146a9c",
+  "purpose": "Recovery snapshot; not an alternate authoring source",
+  "files": [
+    {
+      "path": "research/coverage/CoverageAuditParameters.json",
+      "sha256": "7edc7af356518f7224dc194d943411bdf5c9e711194095a4d0a5846f1abe88a6",
+      "bytes": 1126
+    },
+    {
+      "path": "research/coverage/N5CandidateLinks.json",
+      "sha256": "71a6c0ff4528bfd99a9b1dc695ac776699c446b6d481e45dabd2a95fee8b1af4",
+      "bytes": 10447
+    },
+    {
+      "path": "research/coverage/N5CoverageConsensus.json",
+      "sha256": "3db2194dbeceabf5719788a8d71ac39ebae76376184bd6dbe719cf8c24ced309",
+      "bytes": 551167
+    },
+    {
+      "path": "research/coverage/N5OpenRequirements.json",
+      "sha256": "176bc3a1f8b2555244e19d7a17549f8f987f78de210bba8575db1fba7ddb9eae",
+      "bytes": 32897
+    },
+    {
+      "path": "review/N5CoverageAuditPacket.json",
+      "sha256": "922bbff4b648d12d0e49e34074644964ffe5c32549a439e16f11f0971c18e010",
+      "bytes": 878424
+    },
+    {
+      "path": "review/N5CoverageBefore05Packet.json",
+      "sha256": "26cb6593c2fd907bae6b54b5a6a36972939548718a57242ec29e59911be2fb16",
+      "bytes": 725965
+    },
+    {
+      "path": "review/N5CoverageFoundation05Packet.json",
+      "sha256": "7d46f0d4fd731b01547415504eebe77e71bc5c112afc84841fd8715f555c8119",
+      "bytes": 313286
+    },
+    {
+      "path": "review/N5CoverageFoundation05First.json",
+      "sha256": "1b719f3189ada9676abf85b952d012431735d459d337f69ce171980692d2eed9",
+      "bytes": 25728
+    },
+    {
+      "path": "review/N5CoverageFoundation05Second.json",
+      "sha256": "cca29627b8389056c390cf1bd355740053ba22f66d0d2b92b8afefc2b4bfc638",
+      "bytes": 23016
+    },
+    {
+      "path": "verification/N5CoverageFoundation05Verification.json",
+      "sha256": "1d1fbc42ad898423c7b3c7c57a8301ea43fcaa714e840b3db9817f8ed52ebe53",
+      "bytes": 242
+    },
+    {
+      "path": "verification/ExpansionProductionVerification.json",
+      "sha256": "d23040833660d6396957f145da1a3046da5e62fedcc692851300c1aaf337dd22",
+      "bytes": 244
+    }
+  ]
+}
