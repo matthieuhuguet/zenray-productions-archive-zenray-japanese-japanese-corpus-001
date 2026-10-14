@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "14 October 2026",
+  "level": "N5",
+  "expectedRequirements": 132,
+  "minimumIndependentReviewers": 2,
+  "cataloguePath": "/Users/zenray/.claude/Memory1/Japanese/Site/corpus/catalogue.json",
+  "packetPath": "review/N5CoverageAuditPacket.json",
+  "reportPaths": ["review/N5CoverageFirst.json", "review/N5CoverageSecond.json"],
+  "outputPath": "research/coverage/N5CoverageConsensus.json"
+}

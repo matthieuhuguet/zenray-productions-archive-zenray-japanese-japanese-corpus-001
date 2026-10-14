@@ -1,0 +1,107 @@
+{
+  "date": "14 October 2026",
+  "sourceRoot": "/Users/zenray/.claude/tmp/tmp-zenray-japanese",
+  "purpose": "Recovery snapshot only; canonical source remains workshop",
+  "files": [
+    {
+      "path": "settings.json",
+      "sha256": "d83af392e8c6ea74b2e75af24973a0e2f63c397f853f5220ecbc8f5972eb0a85",
+      "bytes": 7987
+    },
+    {
+      "path": "Scripts/BuildExpansion.py",
+      "sha256": "cba046755346d47466cca8629d8cada10ef0349bf2c72b00f915ad1d549c961c",
+      "bytes": 4781
+    },
+    {
+      "path": "Scripts/PrepareApprovals.py",
+      "sha256": "a699587bec6c7b4bb76d26cf9320b3a45834e7de8d38f4f4c1d3a09637160e8b",
+      "bytes": 5536
+    },
+    {
+      "path": "Scripts/TestApprovals.py",
+      "sha256": "6d74ffc730ee424d40f1b3708f9365665556007699cf23aa500310c38e5a9ed9",
+      "bytes": 2337
+    },
+    {
+      "path": "Scripts/VerifyExpansionProduction.mjs",
+      "sha256": "40ec9405c3e7d54ab665e9d3861c8c5ff32be7c8988871bfde7e86a65900ffa4",
+      "bytes": 1845
+    },
+    {
+      "path": "research/language/ExpansionSeeds.json",
+      "sha256": "484e5f4b78bb08844cfe43aa025a8903f4da8aa7ed68e6580407ad8fdf1777b2",
+      "bytes": 31605
+    },
+    {
+      "path": "research/language/HigherExpansionSeeds.json",
+      "sha256": "c12b2cc5b700c5306922694003d92f28b478d4a805a474d1886b68f0831190b7",
+      "bytes": 22003
+    },
+    {
+      "path": "research/language/FoundationExpansion02Seeds.json",
+      "sha256": "e1734bb4fc737db9a6ae455bb5a2a45f45901d63042104e56eec7cded610c185",
+      "bytes": 24307
+    },
+    {
+      "path": "research/language/ExpansionParameters.json",
+      "sha256": "bfda2bf883c0c12aac6fd6f7de59682d8c4c8c827f1faed85cd82d1b4b67694b",
+      "bytes": 10047
+    },
+    {
+      "path": "research/language/LanguageExpansionRecords.json",
+      "sha256": "5fe0099c9d62a68c25b0455de640c9e4011f98d05dad9b7e654a4386178e48fa",
+      "bytes": 224365
+    },
+    {
+      "path": "research/language/LanguageRecords.json",
+      "sha256": "96f64d0d910434fe0fcd365dd9ceda5d94cf71d724a39d5241fdc4e1d5a744a2",
+      "bytes": 99837
+    },
+    {
+      "path": "research/language/LanguageAdvancedRecords.json",
+      "sha256": "ae6221d6a09d314fb539389e95f37c5fa238e9df4d2e08f796f8ce61574ca9ac",
+      "bytes": 305292
+    },
+    {
+      "path": "review/Approvals.json",
+      "sha256": "15ba717f5658c8ff60025085941209a408a7e5693661c39387e007c20aba2aa1",
+      "bytes": 176673
+    },
+    {
+      "path": "review/RetestOverlay.json",
+      "sha256": "efa4b558fd30ab28df93b324b3d5243da4d78a3c27536856d01f75e111dc3fb0",
+      "bytes": 970
+    },
+    {
+      "path": "review/FoundationExpansion02ReviewPacket.json",
+      "sha256": "38b856740c57a17d0ab2752e761b33409c9792d99d516eea8a607b8241e9c826",
+      "bytes": 72532
+    },
+    {
+      "path": "review/FoundationExpansion02First.json",
+      "sha256": "e437807c8fcd195395a1789cd4c9db03e77e14b5510b24666a78ac52352ff1e6",
+      "bytes": 26107
+    },
+    {
+      "path": "review/FoundationExpansion02CorrectionsFirst.json",
+      "sha256": "51b9a2357cd21f833dca96b8d088b637ab224b225ea20d183a05f06d71465da0",
+      "bytes": 2106
+    },
+    {
+      "path": "review/FoundationExpansion02Second.json",
+      "sha256": "4a07013666b0396e8af221b46f81cded249d18bfb19e5d8c6b21903486339018",
+      "bytes": 21231
+    },
+    {
+      "path": "verification/FoundationExpansion02Verification.json",
+      "sha256": "b8a72b91848cede5cb4bc7d2295dc87e3f4e90ca42ee49240c69e4384aadaaa8",
+      "bytes": 293
+    },
+    {
+      "path": "verification/ExpansionProductionVerification.json",
+      "sha256": "b3883d6c540e4504019e670e84a84e2fb55b72d32ddec1a42df1fb02dc928d71",
+      "bytes": 207
+    }
+  ]
+}

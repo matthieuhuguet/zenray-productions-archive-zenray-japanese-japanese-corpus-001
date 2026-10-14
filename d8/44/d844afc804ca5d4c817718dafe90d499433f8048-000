@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+# 14 October 2026: prove coverage fails closed on stale, conflicting, fabricated and incomplete review evidence.
+import copy
+import unittest
+
+import CompileCoverageAudit as audit
+
+
+class CoverageGate(unittest.TestCase):
+    def setUp(self):
+        self.packet = {'release': 'synthetic', 'requirements': [{
+            'requirement': {'id': 'synthetic-point', 'candidateRecordIds': ['synthetic-card'],
+                            'sourceUrl': 'https://example.org/synthetic'},
+            'requirementHash': 'synthetic-hash'}]}
+        self.row = {'id': 'synthetic-point', 'reviewedRequirementHash': 'synthetic-hash',
+                    'status': 'covered', 'evidenceUrls': ['https://example.org/synthetic'],
+                    'coveredAspects': ['Synthetic teaching evidence'], 'missingAspects': [], 'proposedRecordIds': []}
+        self.reports = [{'reviewerId': reviewer, 'complete': True, 'humanReview': False,
+                         'reviewType': 'independent-semantic-coverage-review', 'release': 'synthetic',
+                         'requirements': [copy.deepcopy(self.row)]} for reviewer in ['synthetic-a', 'synthetic-b']]
+
+    def combine(self):
+        return audit.combine(self.packet, self.reports, 2)[0]
+
+    def test_unanimous_current_coverage_passes(self):
+        self.assertEqual(self.combine()['status'], 'covered')
+
+    def test_disagreement_remains_open(self):
+        self.reports[1]['requirements'][0].update(status='partial', missingAspects=['Missing construction'])
+        self.assertEqual(self.combine()['status'], 'open')
+        self.assertEqual(self.combine()['missingAspects'], ['Missing construction'])
+
+    def test_unanimous_absence_is_missing(self):
+        for report in self.reports:
+            report['requirements'][0].update(status='missing', missingAspects=['Missing construction'])
+        self.assertEqual(self.combine()['status'], 'missing')
+
+    def test_stale_hash_rejected(self):
+        self.reports[1]['requirements'][0]['reviewedRequirementHash'] = 'stale'
+        with self.assertRaisesRegex(ValueError, 'Stale'):
+            self.combine()
+
+    def test_duplicate_reviewer_rejected(self):
+        self.reports[1]['reviewerId'] = 'synthetic-a'
+        with self.assertRaisesRegex(ValueError, 'duplicate reviewer'):
+            self.combine()
+
+    def test_missing_review_rejected(self):
+        self.reports.pop()
+        with self.assertRaisesRegex(ValueError, 'Insufficient'):
+            self.combine()
+
+    def test_incomplete_report_rejected(self):
+        self.reports[1]['requirements'] = []
+        with self.assertRaisesRegex(ValueError, 'every requirement'):
+            self.combine()
+
+    def test_covered_with_open_gap_rejected(self):
+        self.reports[1]['requirements'][0]['missingAspects'] = ['Open gap']
+        with self.assertRaisesRegex(ValueError, 'incomplete'):
+            self.combine()
+
+    def test_evidence_required(self):
+        self.reports[1]['requirements'][0]['evidenceUrls'] = []
+        with self.assertRaisesRegex(ValueError, 'HTTPS'):
+            self.combine()
+
+    def test_empty_candidates_cannot_be_covered(self):
+        self.packet['requirements'][0]['requirement']['candidateRecordIds'] = []
+        with self.assertRaisesRegex(ValueError, 'Empty candidate'):
+            self.combine()
+
+    def test_unrelated_primary_source_rejected(self):
+        self.reports[1]['requirements'][0]['evidenceUrls'] = ['https://example.org/unrelated']
+        with self.assertRaisesRegex(ValueError, 'reviewed primary source'):
+            self.combine()
+
+
+if __name__ == '__main__':
+    unittest.main()

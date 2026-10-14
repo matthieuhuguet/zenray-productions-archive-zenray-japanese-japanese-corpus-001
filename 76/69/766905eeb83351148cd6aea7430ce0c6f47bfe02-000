@@ -1,0 +1,31 @@
+{
+ "schemaVersion":1,"createdAt":"14 October 2026",
+ "policy":"Research candidates only. A candidate does not prove full coverage; missing examples, productive rules or pragmatic restrictions may invalidate it.",
+ "links":{
+ "1":["expand-copula-plain"],"2":["grammar-copula"],"3":["grammar-topic"],"4":["expand-addition-mo"],
+ "5":["expand-demonstrative-things"],"11":["expand-demonstrative-things"],"19":["expand-demonstrative-things"],"6":["expand-noun-no"],
+ "7":["grammar-i-adjectives","expand-i-adjective-past"],"24":["grammar-i-adjectives","expand-i-adjective-noun"],"28":["expand-na-adjective-noun","expand-na-adjective-predicate"],
+ "8":["expand-nominal-question","expand-polite-verb-question"],"10":["grammar-topic","grammar-existence"],"78":["grammar-final-particles"],"71":["grammar-final-particles"],
+ "12":["grammar-verb-groups","expand-ichidan-negative"],"26":["grammar-verb-groups","expand-godan-negative"],"21":["grammar-case-particles"],"1082":["grammar-polite-nonpast","expand-polite-verb-past"],
+ "51":["expand-ichidan-negative"],"888":["expand-godan-negative"],"15":["expand-noun-coordination-to"],
+ "14":["expand-demonstrative-places"],"20":["expand-demonstrative-places"],"29":["expand-demonstrative-places"],"25":["grammar-case-particles"],"32":["grammar-case-particles","expand-location-existence","expand-time-ni","expand-recipient-ni"],
+ "33":["expand-or-ka"],"955":["expand-accompaniment-to"],"9":["expand-probability-deshou"],
+ "13":["grammar-existence","expand-location-existence"],"23":["grammar-existence","expand-location-existence"],
+ "30":["expand-demonstrative-noun"],"37":["expand-demonstrative-noun"],"47":["expand-demonstrative-noun"],"17":["adv-noda"],
+ "874":["expand-i-adjective-past"],"16":["grammar-nominalization"],"953":["expand-i-adjective-noun"],"954":["expand-na-adjective-noun"],"31":["expand-destination-he"],
+ "22":["expand-irregular-suru"],"39":["expand-irregular-kuru"],"895":["expand-plain-verb-past","grammar-te-form"],"41":["expand-plain-verb-past","grammar-te-form"],
+ "716":["expand-likes-noun"],"717":["expand-likes-noun","expand-na-adjective-predicate"],"34":["grammar-nominalization","expand-likes-noun"],
+ "355":["grammar-existence","grammar-relative-clause"],"873":["grammar-i-adjectives"],"36":["expand-instrument-de"],"62":["grammar-cause"],"45":["grammar-cause"],"52":["expand-starting-kara"],
+ "361":["grammar-concession-noni"],"896":["expand-plain-negative-past"],"897":["expand-plain-negative-past","expand-godan-negative"],
+ "416":["grammar-te-form","expand-irregular-suru","expand-irregular-kuru"],"27":["grammar-progressive"],"38":["expand-destination-he"],"48":["expand-purpose-ni-iku"],
+ "1095":["expand-why-doushite"],"951":["grammar-i-adjectives"],"952":["expand-copula-plain","expand-na-adjective-predicate"],"40":["expand-copula-past"],
+ "876":["grammar-i-adjectives","expand-i-adjective-past"],"356":["expand-quotation-omou"],"357":["grammar-relative-clause","grammar-progressive","grammar-result-state"],
+ "720":["expand-noun-no"],"43":["grammar-only"],"712":["expand-interrogative-demonstratives"],"56":["expand-interrogative-demonstratives"],"713":["expand-interrogative-demonstratives"],
+ "764":["grammar-result-state"],"64":["expand-after-te-kara"],"770":["expand-action-sequence-te"],"42":["expand-already-mou"],"72":["expand-still-mada"],"83":["expand-not-yet-teinai"],
+ "46":["grammar-permission"],"59":["grammar-desire"],"79":["expand-action-list-tari"],"53":["expand-before-mae-ni"],"58":["expand-endpoint-made"],"76":["expand-too-sugiru"],"84":["expand-choice-ni-suru"],"57":["expand-change-naru"],
+ "55":["expand-superlative-ichiban"],"73":["expand-comparison-yori"],"718":["expand-something-nanika"],"721":["expand-someone-dareka"],"70":["expand-suggestion-mashou"],"75":["expand-offer-mashouka"],"82":["expand-invitation-masenka"],
+ "35":["grammar-permission"],"60":["expand-verb-request"],"65":["grammar-negative-request"],"67":["grammar-prohibition"],"86":["adv-nakerebanaranai"],"87":["adv-nakerebanaranai"],"68":["adv-hoga-ii"],"69":["adv-hoga-ii"],"74":["expand-obligation-contraction"],
+ "81":["expand-noun-coordination-ya"],"63":["adv-koto-ga-aru"],"765":["grammar-progressive","grammar-result-state"],"769":["expand-predicate-coordination"],"85":["expand-skill-heta"],"77":["expand-skill-jouzu"],"719":["expand-na-adjective-noun","expand-i-adjective-noun"],
+ "722":["grammar-giving"],"723":["grammar-giving"],"724":["grammar-giving"],"54":["grammar-concession-noni"],"80":["adv-tsumori"]
+ }
+}

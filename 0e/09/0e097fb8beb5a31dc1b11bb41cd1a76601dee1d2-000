@@ -1,0 +1,127 @@
+{
+  "date": "14 October 2026",
+  "sourceRoot": "/Users/zenray/.claude/tmp/tmp-zenray-japanese",
+  "purpose": "Recovery snapshot only; canonical authoring source remains the original workshop",
+  "files": [
+    {
+      "path": "settings.json",
+      "bytes": 6270,
+      "sha256": "a95051bd065c33c1953e987b57c891caa3bcb3c806fa75d55ffdef8da6f408a3"
+    },
+    {
+      "path": "Scripts/Corpus.py",
+      "bytes": 27925,
+      "sha256": "6ba2a94bb5738ce12226efb10417853df6f778eb71b5a051b28ddc758c8cef7c"
+    },
+    {
+      "path": "Scripts/PrepareApprovals.py",
+      "bytes": 5243,
+      "sha256": "96c30010c30653cfb03c1a8dbe6de98de0d40763719ffbb1b7f2291285c9d3eb"
+    },
+    {
+      "path": "Scripts/BuildCoverage.py",
+      "bytes": 8262,
+      "sha256": "f73cf0c80859c4fa416c5a4c871e01ca1eb7948c1a6598cefe8b497316790e91"
+    },
+    {
+      "path": "Scripts/BuildExpansion.py",
+      "bytes": 4825,
+      "sha256": "b93fa16be066a881772bfae1ccfe18e72f7ea50e672992904eaf1ae908df73f4"
+    },
+    {
+      "path": "Scripts/VerifyCorpus.py",
+      "bytes": 4048,
+      "sha256": "32b723b4ec4765cd579babc0f2bf20854c199f4a0f8459655658fcd1c82fa342"
+    },
+    {
+      "path": "Scripts/TestCorpus.py",
+      "bytes": 3888,
+      "sha256": "0085e66126e6b6c34a560908b337caefceefa354dfadb3a2d5cd472aed3f0522"
+    },
+    {
+      "path": "Scripts/TestApprovals.py",
+      "bytes": 1989,
+      "sha256": "35b745573be75e3b18e024dea2219756ac3353e54fe8ebaa2c078bf6c199b17a"
+    },
+    {
+      "path": "research/language/ExpansionSeeds.json",
+      "bytes": 31605,
+      "sha256": "484e5f4b78bb08844cfe43aa025a8903f4da8aa7ed68e6580407ad8fdf1777b2"
+    },
+    {
+      "path": "research/language/HigherExpansionSeeds.json",
+      "bytes": 22003,
+      "sha256": "c12b2cc5b700c5306922694003d92f28b478d4a805a474d1886b68f0831190b7"
+    },
+    {
+      "path": "research/language/ExpansionParameters.json",
+      "bytes": 6778,
+      "sha256": "6cdae43e0dea5c3013373b4886d10e0e441781d025165703c664862169acd651"
+    },
+    {
+      "path": "research/language/LanguageExpansionRecords.json",
+      "bytes": 158403,
+      "sha256": "b00267a424e0dec2206959d7edde71b9962ea28aae386f388748919e366dc996"
+    },
+    {
+      "path": "research/coverage/CoverageParameters.json",
+      "bytes": 1211,
+      "sha256": "e63373609851d4cc4902f1ac15a65a1e1673997340144993f29741c4e2ebc781"
+    },
+    {
+      "path": "research/coverage/CoverageLinks.json",
+      "bytes": 194,
+      "sha256": "96f00159265c989399bf2845bc0ec2cce9a18229ac738b625219b87cb338fe7e"
+    },
+    {
+      "path": "research/coverage/CoverageManifest.json",
+      "bytes": 5381967,
+      "sha256": "25a28b1e3ba52c61ebb05202f97201043813af9f0acc9ff004407b81e1d8ab82"
+    },
+    {
+      "path": "research/coverage/CoverageReport.md",
+      "bytes": 934,
+      "sha256": "cbd4221372101dddca31dbc981b52187f8859b191b47f9e9a3c201868d387d12"
+    },
+    {
+      "path": "review/ExpansionReviewPacket.json",
+      "bytes": 173435,
+      "sha256": "e1c8893c1ddd09dc80dba9b562e93b10cfda973aa5991567df1df97610d51a3f"
+    },
+    {
+      "path": "review/ExpansionIndependentFirst.json",
+      "bytes": 55055,
+      "sha256": "d22b89c8d018639df1683a1eb5bf42362fe392abd33056fcb4981bd6cd99cc14"
+    },
+    {
+      "path": "review/ExpansionCorrectionsFirst.json",
+      "bytes": 23393,
+      "sha256": "c1440026b703144cb5e02a9dfafcc7fd458a8097942e467ca84d95a710ef6f43"
+    },
+    {
+      "path": "review/ExpansionFinalCorrectionsFirst.json",
+      "bytes": 2146,
+      "sha256": "0674b252348c514f794b99038ae8b01dbcdf9b6ae6172116c9d1dd11564aff40"
+    },
+    {
+      "path": "review/ExpansionIndependentSecond.json",
+      "bytes": 36253,
+      "sha256": "ade7bc68e4138bc7bcca7d7fea230e1c9a3dcd6d135c9bd2aee92c9a81f6879a"
+    },
+    {
+      "path": "review/ExpansionCorrectionsSecond.json",
+      "bytes": 2596,
+      "sha256": "712d4b4daf8a460edee6716a4b88ef902a0581539afcadac8c3cd4b44e9af209"
+    },
+    {
+      "path": "review/Approvals.json",
+      "bytes": 161010,
+      "sha256": "795fc5c1bed4d9c33d47d5fd66e7e53a3359199807f6f08bc63c5784409b0921"
+    },
+    {
+      "path": "verification/ExpansionVerification.json",
+      "bytes": 294,
+      "sha256": "960eed9a5b4741b1ff81bab702b1a164528ef790f4bda1691e527bde91a5d257"
+    }
+  ]
+}
