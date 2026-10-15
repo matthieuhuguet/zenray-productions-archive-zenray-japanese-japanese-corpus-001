@@ -1,0 +1,107 @@
+{
+  "checkedAt": "15 October 2026",
+  "release": "9dd9165e4122a6ce",
+  "purpose": "Recovery snapshot; live authoring stays in workshop",
+  "files": [
+    {
+      "path": "settings.json",
+      "bytes": 13918,
+      "sha256": "decd40c4f3a386581fa1ff426a63ffd2bce87694870f097fb484bdc68296d460"
+    },
+    {
+      "path": "research/language/FoundationExpansion06Seeds.json",
+      "bytes": 19945,
+      "sha256": "3618d4a5821446a4bba4b6996e9cd0e86f337302b3e66f322000c7363e0154ab"
+    },
+    {
+      "path": "research/language/ExpansionParameters.json",
+      "bytes": 31132,
+      "sha256": "0be9a7b8c4b5bdc64f88c8e1436179b5f215c2f587f86dbe5a1f9b0de0ece7e4"
+    },
+    {
+      "path": "research/language/LanguageExpansionRecords.json",
+      "bytes": 461822,
+      "sha256": "d7d3adf83d0c63d732b51dcb366865135b20f54c029c76c34ed58a0c7b1026b7"
+    },
+    {
+      "path": "review/FoundationExpansion06BeforeHashes.json",
+      "bytes": 16405,
+      "sha256": "24863bb14b4c2571ebc65c5ac1efed3e2ac84a2079fe4e35b1777f469910ea34"
+    },
+    {
+      "path": "review/FoundationExpansion06ReviewPacket.json",
+      "bytes": 54818,
+      "sha256": "8fbe5608c75f6b940ccd494c7339314ba5f9df8907a7199c71df2b4471997de0"
+    },
+    {
+      "path": "review/FoundationExpansion06CorrectionPacket.json",
+      "bytes": 12464,
+      "sha256": "bc33fd177203a91832852468816511d754508c576e506ea6ab5f254ab8fa3422"
+    },
+    {
+      "path": "review/FoundationExpansion06First.json",
+      "bytes": 9231,
+      "sha256": "46c5bb0a77e14dd4738e2db544a8a41107a51d171309163563749c9a93ffe0b0"
+    },
+    {
+      "path": "review/FoundationExpansion06CorrectionsFirst.json",
+      "bytes": 1677,
+      "sha256": "bd63e18929acf0e31e350e5a8ad789860103274abdea807bc64cb24431659e74"
+    },
+    {
+      "path": "review/FoundationExpansion06Second.json",
+      "bytes": 6802,
+      "sha256": "586eb9a642289eb6d114f60159a6ca277c99b0884b708e7f531dd2b8d561123e"
+    },
+    {
+      "path": "review/N5CoverageAuditPacket.json",
+      "bytes": 878424,
+      "sha256": "3306dcba7a69a39f36a311777f8e3ca778d190ea29c11d2578cb6c4728f8bf36"
+    },
+    {
+      "path": "research/coverage/N5CoverageConsensus.json",
+      "bytes": 553948,
+      "sha256": "65d62419852dadbf0f67c90b0d01d29765c40cb867b6ccdd402c39ac2d477ba0"
+    },
+    {
+      "path": "verification/FoundationExpansion06Verification.json",
+      "bytes": 345,
+      "sha256": "e3c6422e312c86519468ff7839d0476bcd3acb33a62a99f5d9d49c43edbccb9c"
+    },
+    {
+      "path": "Scripts/VerifyExpansionProduction.mjs",
+      "bytes": 2214,
+      "sha256": "559cb92ad978eac2db6942e3883f3b3ce603719f0e75b7e4518ade18b1b16972"
+    },
+    {
+      "path": "Scripts/VerifyBackup.py",
+      "bytes": 2047,
+      "sha256": "f426aea6d91a967c0530026714395b1d8d2ac59859eb16ae6289ac1f353230fe"
+    },
+    {
+      "path": "Scripts/VerifyCloudIdentity.py",
+      "bytes": 5230,
+      "sha256": "db8ac89c009364c08abff919ce0cc4e8803ef2440b3ca96273d2d17915e76c69"
+    },
+    {
+      "path": "research/coverage/foundation-sources/4990c7c10de1047b.html",
+      "bytes": 178173,
+      "sha256": "62f5d4dddfedca32527d1388e936508f27297351e1aee50808fe4fe09be0f7ef"
+    },
+    {
+      "path": "research/coverage/foundation-sources/ad29a2411d924def.html",
+      "bytes": 35198,
+      "sha256": "3ddabfcd95ab6d71326372b87e676b0e9662132db81a7755966a66df79b2c1d5"
+    },
+    {
+      "path": "research/coverage/foundation-sources/6a3552b73f9ac590.html",
+      "bytes": 34934,
+      "sha256": "826d01145f8eeaf5965f4e470d77a6609b2a005b66e97b5988b71fb6b75bdc79"
+    },
+    {
+      "path": "research/coverage/foundation-sources/e6256b964fadfbc5.html",
+      "bytes": 555145,
+      "sha256": "13f9b140d33efa9726c21f81b0a282840bf8c2bb42977d93aafca7e384bf6b29"
+    }
+  ]
+}
